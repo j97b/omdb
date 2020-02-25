@@ -3,12 +3,13 @@ import React from 'react';
 export default function Output(props) {
     return (
         <fieldset>
-            <h3>Title: {props.title}</h3>
-            <h3>Release Year: {props.year}</h3>
-            <h3>Cast: {props.actors}</h3>
-            <h3>Rated: {props.rated}</h3>
-            <h3>Score: {props.metascore}</h3>
-            <h3>Plot: {props.plot}</h3>
+            <p><strong>Title:</strong> {props.title}</p>
+            <p><strong>Release Year:</strong> {props.year}</p>
+            <p><strong>Cast:</strong> {props.cast}</p>
+            <p><strong>Genre:</strong> {props.genre}</p>
+            <p><strong>Rated:</strong> {props.rated}</p>
+            <p><strong>Score:</strong> {props.metascore}{props.outOf100}</p>
+            <p><strong>Plot:</strong> {props.plot}</p>
         </fieldset>
     )
 }
