@@ -1,11 +1,11 @@
 import React from 'react';
-import Display from './Display'
+import Routing from './Routing';
 import './App.css';
 
-function App() {
-  return (
-    <Display />
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <Routing />
+    );
+  }
 }
-
-export default App;

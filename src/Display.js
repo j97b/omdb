@@ -33,17 +33,17 @@ export default class Display extends React.Component {
 
     render() {
         const outputs = this.state.data.map(film =>
-            <Output title={film.Title} year={film.Year} type={film.Type} />)
+            <Output title={film.Title} year={film.Year} type={film.Type} poster={film.Poster} />)
 
         return (
-
             <div>
-                <SearchBar name='searchbar' value={this.state.searchTerm} handleChange={this.updateText} onSubmit={this.searchFunction} />
-                {outputs}
+                <header>
+                    <SearchBar name='searchbar' value={this.state.searchTerm} handleChange={this.updateText} onSubmit={this.searchFunction} />
+                </header>
+                <main>
+                    {outputs}
+                </main>
             </div>
-
-
-
         )
     }
 }
