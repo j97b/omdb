@@ -24,16 +24,22 @@ export default class Display extends React.Component {
             .then(response => {
                 console.log(response.data);
                 this.setState({
-                    data: response.data.Search,
+                    data: response.data.Search
                 });
             });
 
     };
 
+    viewDetails = (id) => {
+        this.props.history.push(`/details/${id}`);
+    }
+
 
     render() {
         const outputs = this.state.data.map(film =>
-            <Output title={film.Title} year={film.Year} type={film.Type} poster={film.Poster} />)
+            <Output {...film} viewDetails={() => this.viewDetails(film.imdbID)}/>)
+        
+        // const details = this.state.moviedata.map
 
         return (
             <div>
