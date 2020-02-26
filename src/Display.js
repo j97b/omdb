@@ -26,7 +26,6 @@ export default class Display extends React.Component {
                 this.setState({
                     data: response.data.Search,
                 });
-
             });
 
     };
@@ -34,7 +33,7 @@ export default class Display extends React.Component {
 
     render() {
         const outputs = this.state.data.map(film =>
-            <Output title={film.Title} year={film.Year} cast={film.Actors} genre={film.Genre} rated={film.Rated} metascore={film.Metascore} plot={film.Plot} />)
+            <Output title={film.Title} year={film.Year} type={film.Type} />)
 
         return (
 
