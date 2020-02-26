@@ -9,8 +9,7 @@ export default class Display extends React.Component {
         super(props);
         this.state = {
             searchTerm: '',
-            data: '',
-            outOf100: ''
+            data: []
         }
     }
 
@@ -18,26 +17,34 @@ export default class Display extends React.Component {
         this.setState({ searchTerm: target.value });
     }
 
-    searchFunction = ( event ) => {
+    searchFunction = (event) => {
         event.preventDefault();
         axios
-        .get(`http://www.omdbapi.com/?t=${this.state.searchTerm}&apikey=6f50ac46`)
-        .then(response => {
-            console.log(response.data);
-            this.setState({ 
-                data: response.data,
-                outOf100: '/100'
+            .get(`http://www.omdbapi.com/?s=${this.state.searchTerm}&apikey=6f50ac46`)
+            .then(response => {
+                console.log(response.data);
+                this.setState({
+                    data: response.data.Search,
+                });
+
             });
-        });
-    }
+
+    };
+
 
     render() {
+        const outputs = this.state.data.map(film =>
+            <Output title={film.Title} year={film.Year} cast={film.Actors} genre={film.Genre} rated={film.Rated} metascore={film.Metascore} plot={film.Plot} />)
+
         return (
+
             <div>
                 <SearchBar name='searchbar' value={this.state.searchTerm} handleChange={this.updateText} onSubmit={this.searchFunction} />
-                <Output title={this.state.data.Title} year={this.state.data.Year} cast={this.state.data.Actors}
-                genre={this.state.data.Genre} rated={this.state.data.Rated} metascore={this.state.data.Metascore} outOf100={this.state.outOf100} plot={this.state.data.Plot}/> 
+                {outputs}
             </div>
+
+
+
         )
     }
 }

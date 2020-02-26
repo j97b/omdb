@@ -8,7 +8,7 @@ export default function Output(props) {
             <p><strong>Cast:</strong> {props.cast}</p>
             <p><strong>Genre:</strong> {props.genre}</p>
             <p><strong>Rated:</strong> {props.rated}</p>
-            <p><strong>Score:</strong> {props.metascore}{props.outOf100}</p>
+            <p><strong>Score:</strong> {props.metascore}</p>
             <p><strong>Plot:</strong> {props.plot}</p>
         </fieldset>
     )
