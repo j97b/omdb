@@ -1,19 +1,19 @@
 import React from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Details extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.history.location.pathname.slice(9),
             data: []
         }
     }
 
     componentDidMount = (event) => {
         axios
-        .get(`http://www.omdbapi.com/?i=${this.state.id}&apikey=6f50ac46`)
+        .get(`http://www.omdbapi.com/?i=${this.props.match.params.id}&apikey=6f50ac46`)
         .then(response => {
             console.log(response.data);
             this.setState({ 

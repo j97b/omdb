@@ -1,12 +1,20 @@
 import React from 'react';
+import { Card, ListGroup } from 'react-bootstrap';
 
 export default function Output(props) {
     return (
-        <fieldset>
-            <img src={props.Poster} alt='NOPE'/>
-            <p><strong>Title:</strong> {props.Title}</p>
-            <p><strong>Release Year:</strong> {props.Year}</p>
-            <button onClick={props.viewDetails}>view</button>
-        </fieldset>
+        <Card className='card'>
+            <Card.Img onClick={props.viewDetails} class='poster' variant='top' src={props.Poster} alt='NOPE' />
+            <Card.Body>
+                <ListGroup>
+                    <ListGroup.Item className='list'>
+                        <strong>Title: </strong> {props.Title}
+                    </ListGroup.Item>
+                    <ListGroup.Item className='list'>
+                        <strong>Year: </strong> {props.Year}
+                    </ListGroup.Item>
+                </ListGroup>
+            </Card.Body>
+        </Card>
     )
 }

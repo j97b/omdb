@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBar from './SearchBar';
 import Output from './Output';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Display extends React.Component {
 
@@ -17,10 +17,9 @@ export default class Display extends React.Component {
         this.setState({ searchTerm: target.value });
     }
 
-    searchFunction = (event) => {
-        event.preventDefault();
+    componentDidMount = () => {
         axios
-            .get(`http://www.omdbapi.com/?s=${this.state.searchTerm}&apikey=6f50ac46`)
+            .get(`http://www.omdbapi.com/?s=${this.props.match.params.query}&apikey=6f50ac46`)
             .then(response => {
                 console.log(response.data);
                 this.setState({
@@ -38,17 +37,10 @@ export default class Display extends React.Component {
     render() {
         const outputs = this.state.data.map(film =>
             <Output {...film} viewDetails={() => this.viewDetails(film.imdbID)}/>)
-        
-        // const details = this.state.moviedata.map
 
         return (
-            <div>
-                <header>
-                    <SearchBar name='searchbar' value={this.state.searchTerm} handleChange={this.updateText} onSubmit={this.searchFunction} />
-                </header>
-                <main>
-                    {outputs}
-                </main>
+            <div className='flex-container'>
+                {outputs}
             </div>
         )
     }
